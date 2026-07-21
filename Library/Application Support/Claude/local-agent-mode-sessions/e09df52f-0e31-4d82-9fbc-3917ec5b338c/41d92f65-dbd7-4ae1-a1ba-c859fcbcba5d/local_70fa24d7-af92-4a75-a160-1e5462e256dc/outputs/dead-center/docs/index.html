@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dead Center — the best seat in the house</title>
+<meta name="description" content="The best seat in every premium-format auditorium at 13 theatres across Southern California. IMAX, Dolby, PRIME, XL, 70mm and SCREENX, measured from the actual seat maps.">
+<meta name="theme-color" content="#1f3864">
+<meta property="og:title" content="Dead Center — the best seat in the house">
+<meta property="og:description" content="The best seat in every premium-format auditorium at 13 theatres across Southern California.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dead Center — the best seat in the house">
+<meta name="twitter:description" content="The best seat in every premium-format auditorium across Southern California.">
+<meta name="twitter:image" content="og.png">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Dead Center">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231f3864'/><rect x='7' y='7' width='18' height='3' rx='1.5' fill='%23c6e0b4'/><g fill='%23fff'><rect x='7' y='14' width='4' height='4' rx='1'/><rect x='14' y='14' width='4' height='4' rx='1' fill='%23c6e0b4'/><rect x='21' y='14' width='4' height='4' rx='1'/><rect x='7' y='21' width='4' height='4' rx='1'/><rect x='14' y='21' width='4' height='4' rx='1'/><rect x='21' y='21' width='4' height='4' rx='1'/></g></svg>">
+<link rel="stylesheet" href="styles.css">
+</head><body>
+<div class="wrap">
+<header>
+  <h1>Dead Center</h1>
+  <p>The best seat in every premium-format auditorium across Southern California.
+     Dead-center horizontally, format-aware depth. A room's layout and its best seat are fixed
+     properties of the auditorium — only live availability changes.</p>
+  <button id="install" type="button" hidden>Install app</button>
+  <p id="iostip" hidden>To install: tap the <b>Share</b> icon, then <b>Add to Home Screen</b>.</p>
+</header>
+
+<div class="picker">
+  <h2>Find my seat</h2>
+  <p class="hint">Pick a theatre, then a format. Theatres are listed nearest-first.</p>
+  <div class="loc"><button id="loc" type="button">Sort by my location</button>
+    <span id="locmsg">Sorted from downtown San Diego.</span></div>
+  <div class="selects">
+    <label>Theatre
+      <select id="pt"><option value="">Choose a theatre…</option></select></label>
+    <label>Format
+      <select id="pf" disabled><option value="">—</option></select></label>
+  </div>
+  <div id="answer" aria-live="polite"></div>
+</div>
+
+<div class="controls">
+  <input type="search" id="q" placeholder="Search all rooms…" autocomplete="off" aria-label="Search">
+  <div class="chips" id="chips"></div>
+</div>
+
+<div class="count" id="count" aria-live="polite"></div>
+<div id="list"></div>
+
+<div class="gaps">
+  <h2>Not captured — flagged, not guessed</h2>
+  <p class="sub">Formats with no bookable showtime in the browsable window, so no seat map could be read.
+     These are deliberately empty. A plausible-looking number here would be a fabrication.</p>
+  <dl id="gaps"></dl>
+</div>
+
+<footer>
+  Captured read-only from amctheatres.com seat maps, 20 Jul – 1 Aug 2026.<br>
+  Distances are straight-line miles (downtown San Diego by default, or your location), not driving miles.<br>
+  Independent reference. Not affiliated with or endorsed by AMC Theatres.
+</footer>
+</div>
+
+<script src="seats.js"></script>
+<script src="app.js"></script>
+</body></html>

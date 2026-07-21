@@ -1,0 +1,33 @@
+name: test
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  data-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      # No dependencies to install — test.mjs is pure Node stdlib.
+      - name: Run data-contract test
+        run: node docs/test.mjs
+
+  build-reproducible:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pillow
+      # Rebuild and fail if docs/ wasn't regenerated from source before committing.
+      # (Ignores binary asset timestamps by only diffing text output.)
+      - name: Rebuild and check seats.js is in sync
+        run: |
+          cp docs/seats.js /tmp/committed-seats.js
+          python3 build.py
+          diff /tmp/committed-seats.js docs/seats.js
