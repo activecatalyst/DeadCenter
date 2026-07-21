@@ -1,7 +1,0 @@
-# Netlify / Cloudflare Pages headers. On other hosts, translate to your own config.
-/*
-  Content-Security-Policy: default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; manifest-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
-  X-Content-Type-Options: nosniff
-  Referrer-Policy: no-referrer
-  Permissions-Policy: geolocation=(self), camera=(), microphone=()
-  X-Frame-Options: DENY
