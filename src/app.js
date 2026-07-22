@@ -204,8 +204,10 @@
   }
 
   $('#pt').addEventListener('change', function () {
-    var t = this.value, pf = $('#pf');
+    var t = this.value, pf = $('#pf'), pa = $('#pa');
     $('#answer').innerHTML = '';
+    pa.value = '';
+    pa.disabled = !(t && DATA.auditoriums && DATA.auditoriums[t]);
     if (!t) { pf.disabled = true; pf.innerHTML = '<option value="">—</option>'; return; }
     var fs = formatsFor(t);
     pf.disabled = false;
@@ -214,7 +216,9 @@
              (x.ok ? '' : '  — not captured') + '</option>'; }).join('');
     if (fs.length === 1) { pf.value = fs[0].f; showAnswer(); }
   });
-  $('#pf').addEventListener('change', showAnswer);
+  // Format picker and auditorium number are two ways in; using one clears the other.
+  $('#pf').addEventListener('change', function () { $('#pa').value = ''; showAnswer(); });
+  $('#pa').addEventListener('input', function () { if (this.value !== '') $('#pf').value = ''; showAuditorium(); });
 
   // Re-center the recommendation on the SCREEN axis rather than the seat-block
   // axis when a room's screen is measured off-center. Returns the adjusted seat
@@ -254,6 +258,97 @@
       'but aisle positions within a row are not drawn.</div></div></div>';
   }
 
+  // One-line, honest description of what each format is.
+  var EXPLAIN = {
+    'IMAX': 'IMAX — a tall, high-impact screen and big sound; the frame is larger top-to-bottom than a standard house.',
+    'IMAX (very large)': 'IMAX — a true large-format, 70mm-capable screen (CityWalk’s is ~7 stories); the biggest presentation here.',
+    'Dolby Cinema': 'Dolby Cinema — dual-laser HDR projection with deep contrast, Dolby Atmos sound, and powered recliners.',
+    '70mm': '70mm — film-print projection: a wide, film-grain image prized by enthusiasts.',
+    'XL': 'XL at AMC — AMC’s extra-large standard screen with Dolby Atmos; bigger than a normal house.',
+    'PRIME': 'PRIME at AMC — AMC’s large-format brand: a big wall-to-wall screen, laser projection, Atmos and recliners.',
+    'SCREENX': 'SCREENX — a 270° presentation that extends onto the side walls for select scenes; sit dead-center.',
+    'Standard Laser': 'Standard Laser — a regular auditorium with laser projection. A representative sample, not a fixed room.',
+    'RealD 3D': 'RealD 3D — polarized 3D in a standard auditorium; the room varies by showtime.'
+  };
+
+  // "Check availability" (AMC) + "Directions" (Maps) link-out for a theatre.
+  function linksFor(t) {
+    var info = DATA.theatreInfo && DATA.theatreInfo[t];
+    var out = '<div class="links">';
+    if (info && info.slug) {
+      out += '<a href="https://www.amctheatres.com/movie-theatres/' + esc(info.slug) +
+             '" target="_blank" rel="noopener">Check availability on AMC ↗</a>';
+    }
+    out += '<a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(t) +
+           '" target="_blank" rel="noopener">Directions ↗</a></div>';
+    return out;
+  }
+
+  function rateBox(room) {
+    return '<div class="rate"><label>Rate a seat in this room ' +
+      '<input class="ratein" type="text" data-room="' + esc(room.id) + '" autocomplete="off" ' +
+      'placeholder="e.g. ' + esc(room.seat) + '"></label><div class="ratered" aria-live="polite"></div></div>';
+  }
+
+  // The inner markup for a mapped room (optimal seat + diagram + rationale + quirks).
+  // Shared by the format picker and the auditorium-number lookup.
+  function roomAnswerInner(room) {
+    var adj = screenAdjust(room);
+    var shown = adj.row + adj.seat;
+    return '<div class="bigseat"><span class="num' + (room.inband ? '' : ' off') + '">' + esc(shown) + '</span>' +
+      '<span class="sub"><b>' + esc(room.short) + ' · ' + esc(room.format) + '</b>' +
+      'Row ' + esc(room.bestRow) + ' · ' + room.lo + '–' + room.hi + '% back · ' +
+      esc(room.seatType) + '<br>' + room.total + ' seats across ' + room.rows.length + ' rows · captured ' +
+      esc(room.date) + (room.rep ? ' · <b class="inline">representative sample</b>' : '') +
+      '</span></div>' +
+      (EXPLAIN[room.format] ? '<p class="fmtnote">' + esc(EXPLAIN[room.format]) + '</p>' : '') +
+      (adj.note ? '<p class="warn mt0">' + esc(adj.note) + '</p>' : '') +
+      seatMap(room, adj.seat) +
+      '<p class="why mt">' + esc(room.why) + '</p>' +
+      '<ul class="quirks">' + room.quirks.map(function (q) { return '<li>' + esc(q) + '</li>'; }).join('') +
+      '</ul>' +
+      rateBox(room) +
+      linksFor(room.theater);
+  }
+
+  // Live "rate my seat" — delegated so it works for every dynamically rendered answer.
+  document.addEventListener('input', function (e) {
+    var el = e.target;
+    if (!el.classList || !el.classList.contains('ratein')) return;
+    var room = DATA.rooms.filter(function (r) { return r.id === el.dataset.room; })[0];
+    var out = el.closest('.rate').querySelector('.ratered');
+    if (!room || !out) return;
+    var v = (el.value || '').trim().toUpperCase();
+    if (!v) { out.className = 'ratered'; out.textContent = ''; return; }
+    var m = v.match(/^([A-Z]{1,2})(\d{1,3})$/);
+    if (!m) { out.className = 'ratered bad'; out.textContent = 'Enter a seat like ' + room.seat + '.'; return; }
+    var letter = m[1], num = parseInt(m[2], 10);
+    var row = room.rows.filter(function (r) { return r.r === letter; })[0];
+    if (!row) { out.className = 'ratered bad'; out.textContent = 'There’s no row ' + letter + ' in this room.'; return; }
+    if (num < 1 || num > row.n) {
+      out.className = 'ratered bad'; out.textContent = 'Row ' + letter + ' has seats 1–' + row.n + '.'; return;
+    }
+    var off = num - row.c;
+    // horizontal position as a share of the half-row-width: 0% = dead center,
+    // 100% = the end seat. Even-spacing estimate (doesn't model aisle gaps).
+    var half = Math.max(1, (row.n - 1) / 2);
+    var pct = Math.min(100, Math.round(Math.abs(off) / half * 100));
+    var horiz = off === 0 ? 'dead-center in its row (0% off-center)'
+      : '~' + pct + '% off-center — ' + Math.abs(off) + ' seat' + (Math.abs(off) === 1 ? '' : 's') +
+        ' from the row’s center (seat ' + row.c + ')';
+    var cls = { 'SWEET SPOT': 'good', 'good': 'ok', 'too close': 'warn', 'too far': 'warn' }[row.v];
+    var rowWord = row.v === 'SWEET SPOT' ? 'a sweet-spot row' : row.v === 'good' ? 'a good row' : 'a ' + row.v + ' row';
+    out.className = 'ratered ' + cls;
+    out.innerHTML = '<b>' + esc(letter + num) + '</b> is in ' + rowWord + ' (' + row.d + '% back) and ' + horiz +
+      '. This room’s optimal is <b>' + esc(room.seat) + '</b>.' +
+      (off === 0 ? '' : '<span class="rq">Off-center % assumes even seat spacing.</span>');
+  });
+
+  function theatreShort(t) {
+    var r = DATA.rooms.filter(function (x) { return x.theater === t; })[0];
+    return r ? r.short : t;
+  }
+
   function showAnswer() {
     var t = $('#pt').value, f = $('#pf').value, out = $('#answer');
     if (!t || !f) { out.innerHTML = ''; return; }
@@ -266,20 +361,53 @@
         '</p></div></div>';
       return;
     }
-    var adj = screenAdjust(room);
-    var shown = adj.row + adj.seat;
-    out.innerHTML = '<div class="answer">' +
-      '<div class="bigseat"><span class="num' + (room.inband ? '' : ' off') + '">' + esc(shown) + '</span>' +
-      '<span class="sub"><b>' + esc(room.short) + ' · ' + esc(room.format) + '</b>' +
-      'Row ' + esc(room.bestRow) + ' · ' + room.lo + '–' + room.hi + '% back · ' +
-      esc(room.seatType) + '<br>' + room.total + ' seats across ' + room.rows.length + ' rows · captured ' +
-      esc(room.date) + (room.rep ? ' · <b class="inline">representative sample</b>' : '') +
-      '</span></div>' +
-      (adj.note ? '<p class="warn mt0">' + esc(adj.note) + '</p>' : '') +
-      seatMap(room, adj.seat) +
-      '<p class="why mt">' + esc(room.why) + '</p>' +
-      '<ul class="quirks">' + room.quirks.map(function (q) { return '<li>' + esc(q) + '</li>'; }).join('') +
-      '</ul></div>';
+    out.innerHTML = '<div class="answer">' + roomAnswerInner(room) + '</div>';
+  }
+
+  // Auditorium-number lookup: capacity + format for any auditorium, plus the
+  // optimal seat when that auditorium is a premium room I actually mapped.
+  var CONF = {
+    high:  'matches my measured seat counts',
+    good:  'within a few seats of my measured counts',
+    approx:'differs noticeably from my measured counts — treat as approximate'
+  };
+  function showAuditorium() {
+    var t = $('#pt').value, out = $('#answer'), raw = $('#pa').value;
+    if (!t || raw === '') { showAnswer(); return; }   // no number → fall back to format flow
+    var num = parseInt(raw, 10);
+    var A = DATA.auditoriums && DATA.auditoriums[t];
+    if (!A) {
+      out.innerHTML = '<div class="answer"><div class="notcaptured"><b>No auditorium list</b>' +
+        '<p>I don’t have per-auditorium capacity for ' + esc(theatreShort(t)) + '.</p></div></div>';
+      return;
+    }
+    var src = 'Capacity from Cinema Treasures (' + esc(A.source) + ', ' + esc(A.asOf) + ') — ' + CONF[A.conf] + '.';
+    var a = A.list.filter(function (x) { return x.n === num; })[0];
+    if (!a) {
+      out.innerHTML = '<div class="answer"><div class="notcaptured"><b>Auditorium ' + num + ' not listed</b>' +
+        '<p>The capacity list for ' + esc(theatreShort(t)) + ' doesn’t include auditorium ' + num +
+        ' — it may be incomplete. ' + src + '</p></div></div>';
+      return;
+    }
+    var head = '<div class="bigseat"><span class="num cap">' + a.seats + '</span>' +
+      '<span class="sub"><b>Auditorium ' + a.n + (a.fmt ? ' · ' + esc(a.fmt) : '') + '</b>' +
+      esc(theatreShort(t)) + ' · ' + a.seats + ' seats<br>' + src +
+      (a.inf ? ' Format identified by matching capacity to my seat map, not stated by the source.' : '') +
+      '</span></div>';
+    var body;
+    if (a.mapped) {
+      var room = DATA.rooms.filter(function (r) { return r.id === a.mapped; })[0];
+      body = '<p class="why mt0">This is the ' + esc(a.fmt) + ' house — here’s its optimal seat.</p>' +
+             roomAnswerInner(room);
+    } else if (a.fmt) {
+      body = '<p class="warn mt0">This is the ' + esc(a.fmt) + ' house, but I don’t have a measured seat map ' +
+             'for it (no showtime in that format during capture) — capacity only.</p>' +
+             (EXPLAIN[a.fmt] ? '<p class="fmtnote">' + esc(EXPLAIN[a.fmt]) + '</p>' : '') + linksFor(t);
+    } else {
+      body = '<p class="warn mt0">Standard auditorium — capacity only. Standard screens float between rooms, ' +
+             'so there’s no fixed optimal seat here.</p>' + linksFor(t);
+    }
+    out.innerHTML = '<div class="answer">' + head + body + '</div>';
   }
 
   $('#gaps').innerHTML = DATA.gaps.map(function (g) {

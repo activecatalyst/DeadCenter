@@ -70,5 +70,23 @@ for (const g of S.gaps) {
      'gap entry well-formed');
 }
 
+// Auditorium capacity: every mapped id must resolve to a real room, and every
+// auditorium's seat count must be a positive integer.
+if (S.auditoriums) {
+  const ids = new Set(S.rooms.map(r => r.id));
+  for (const [theater, A] of Object.entries(S.auditoriums)) {
+    ok(typeof A.source === 'string' && A.source, `${theater}: capacity source`);
+    ok(['high', 'good', 'approx'].includes(A.conf), `${theater}: confidence grade`);
+    ok(Array.isArray(A.list) && A.list.length > 0, `${theater}: auditorium list`);
+    for (const a of A.list) {
+      ok(Number.isInteger(a.n) && a.n >= 1, `${theater} aud ${a.n}: number`);
+      ok(Number.isInteger(a.seats) && a.seats > 0, `${theater} aud ${a.n}: seats`);
+      if (a.mapped) ok(ids.has(a.mapped), `${theater} aud ${a.n}: mapped id ${a.mapped} resolves`);
+      // a mapped auditorium must name a format
+      if (a.mapped) ok(a.fmt, `${theater} aud ${a.n}: mapped implies a format`);
+    }
+  }
+}
+
 console.log(`✓ ${n} assertions passed across ${S.rooms.length} rooms, ` +
             `${S.missing.length} missing, ${S.gaps.length} gaps.`);

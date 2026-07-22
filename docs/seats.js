@@ -4046,5 +4046,1608 @@ window.SEATS = {
    "format": "RealD 3D",
    "note": "No RealD 3D showtimes in the sampled window. Use the standard Laser room as a stand-in."
   }
- ]
+ ],
+ "auditoriums": {
+  "AMC Mission Valley 20": {
+   "source": "ridethectrain",
+   "asOf": "Mar 2026",
+   "conf": "good",
+   "list": [
+    {
+     "n": 1,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 137,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 131,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 203,
+     "fmt": "IMAX",
+     "mapped": "mission-valley-20/imax",
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 114,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 102,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 112,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 149,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 252,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 176,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 175,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 88,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 244,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 235,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 15,
+     "seats": 122,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 16,
+     "seats": 297,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 17,
+     "seats": 143,
+     "fmt": "Dolby Cinema",
+     "mapped": "mission-valley-20/dolby-cinema",
+     "inf": false
+    },
+    {
+     "n": 18,
+     "seats": 301,
+     "fmt": "XL",
+     "mapped": "mission-valley-20/xl",
+     "inf": true
+    },
+    {
+     "n": 19,
+     "seats": 282,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 20,
+     "seats": 296,
+     "fmt": "70mm",
+     "mapped": "mission-valley-20/70mm",
+     "inf": false
+    }
+   ]
+  },
+  "AMC UTC 14": {
+   "source": "ridethectrain",
+   "asOf": "Mar 2026",
+   "conf": "good",
+   "list": [
+    {
+     "n": 1,
+     "seats": 48,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 41,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 39,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 113,
+     "fmt": "Dolby Cinema",
+     "mapped": "utc-14/dolby-cinema",
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 98,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 61,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 91,
+     "fmt": "PRIME",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 29,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 86,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 41,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 92,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 92,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 41,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 55,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC Plaza Bonita 14": {
+   "source": "ridethectrain",
+   "asOf": "Mar 2026",
+   "conf": "approx",
+   "list": [
+    {
+     "n": 1,
+     "seats": 266,
+     "fmt": "IMAX",
+     "mapped": "plaza-bonita-14/imax",
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 130,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 88,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 124,
+     "fmt": "Dolby Cinema",
+     "mapped": "plaza-bonita-14/dolby-cinema",
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 294,
+     "fmt": "XL",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 99,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 247,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 204,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 165,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 99,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 204,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 130,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC Orange 30": {
+   "source": "Nothing But Cinema",
+   "asOf": "Mar 2026",
+   "conf": "high",
+   "list": [
+    {
+     "n": 1,
+     "seats": 97,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 161,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 161,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 110,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 190,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 235,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 275,
+     "fmt": "XL",
+     "mapped": "orange-30/xl",
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 178,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 159,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 94,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 97,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 97,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 405,
+     "fmt": "XL",
+     "mapped": "orange-30/xl",
+     "inf": false
+    },
+    {
+     "n": 15,
+     "seats": 227,
+     "fmt": "Dolby Cinema",
+     "mapped": "orange-30/dolby-cinema",
+     "inf": false
+    },
+    {
+     "n": 16,
+     "seats": 317,
+     "fmt": "IMAX",
+     "mapped": "orange-30/imax",
+     "inf": false
+    },
+    {
+     "n": 17,
+     "seats": 405,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 18,
+     "seats": 97,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 19,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 20,
+     "seats": 97,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 21,
+     "seats": 97,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 22,
+     "seats": 159,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 23,
+     "seats": 178,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 24,
+     "seats": 275,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 25,
+     "seats": 235,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 26,
+     "seats": 190,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 27,
+     "seats": 110,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 28,
+     "seats": 161,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 29,
+     "seats": 161,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 30,
+     "seats": 97,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC Burbank 16": {
+   "source": "Nothing But Cinema",
+   "asOf": "Mar 2026",
+   "conf": "high",
+   "list": [
+    {
+     "n": 1,
+     "seats": 348,
+     "fmt": "IMAX",
+     "mapped": "burbank-16/imax",
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 145,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 145,
+     "fmt": "70mm",
+     "mapped": "burbank-16/70mm",
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 147,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 85,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 128,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 238,
+     "fmt": "SCREENX",
+     "mapped": "burbank-16/screenx",
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 241,
+     "fmt": "XL",
+     "mapped": "burbank-16/xl",
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 99,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 82,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 145,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 146,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 146,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 273,
+     "fmt": "Dolby Cinema",
+     "mapped": "burbank-16/dolby-cinema",
+     "inf": false
+    },
+    {
+     "n": 15,
+     "seats": 401,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 16,
+     "seats": 228,
+     "fmt": "PRIME",
+     "mapped": "burbank-16/prime",
+     "inf": false
+    }
+   ]
+  },
+  "Universal Cinema AMC at CityWalk Hollywood": {
+   "source": "Nothing But Cinema",
+   "asOf": "Apr 2026",
+   "conf": "high",
+   "list": [
+    {
+     "n": 1,
+     "seats": 173,
+     "fmt": "PRIME",
+     "mapped": "citywalk-universal/prime",
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 86,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 86,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 86,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 118,
+     "fmt": "70mm",
+     "mapped": "citywalk-universal/70mm",
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 63,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 62,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 62,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 63,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 116,
+     "fmt": "XL",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 86,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 86,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 86,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 173,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 15,
+     "seats": 54,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 16,
+     "seats": 49,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 17,
+     "seats": 55,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 18,
+     "seats": 49,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 19,
+     "seats": 376,
+     "fmt": "IMAX (very large)",
+     "mapped": "citywalk-universal/imax-very-large",
+     "inf": false
+    }
+   ]
+  },
+  "AMC Tyler Galleria 16": {
+   "source": "ridethectrain",
+   "asOf": "Dec 2025",
+   "conf": "approx",
+   "list": [
+    {
+     "n": 1,
+     "seats": 271,
+     "fmt": "IMAX",
+     "mapped": "tyler-galleria-16/imax",
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 99,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 165,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 99,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 215,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 294,
+     "fmt": "XL",
+     "mapped": "tyler-galleria-16/xl",
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 294,
+     "fmt": "XL",
+     "mapped": "tyler-galleria-16/xl",
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 215,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 99,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 165,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 15,
+     "seats": 99,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 16,
+     "seats": 128,
+     "fmt": "Dolby Cinema",
+     "mapped": "tyler-galleria-16/dolby-cinema",
+     "inf": false
+    }
+   ]
+  },
+  "AMC Tustin 14 @ The District": {
+   "source": "Nothing But Cinema",
+   "asOf": "Sep 2024",
+   "conf": "high",
+   "list": [
+    {
+     "n": 1,
+     "seats": 164,
+     "fmt": "PRIME",
+     "mapped": "tustin-14/prime",
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 149,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 137,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 96,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 81,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 96,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 70,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 160,
+     "fmt": "Dolby Cinema",
+     "mapped": "tustin-14/dolby-cinema",
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 154,
+     "fmt": "IMAX",
+     "mapped": "tustin-14/imax",
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 137,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 98,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 81,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 70,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 81,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC Fashion Valley 18": {
+   "source": "ridethectrain",
+   "asOf": "Mar 2026",
+   "conf": "good",
+   "list": [
+    {
+     "n": 1,
+     "seats": 127,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 81,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 83,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 82,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 74,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 92,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 83,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 74,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 15,
+     "seats": 93,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 16,
+     "seats": 83,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 17,
+     "seats": 83,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 18,
+     "seats": 83,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC La Jolla 12": {
+   "source": "ridethectrain",
+   "asOf": "Mar 2026",
+   "conf": "good",
+   "list": [
+    {
+     "n": 1,
+     "seats": 40,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 38,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 90,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 149,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 149,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 51,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 51,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 44,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 154,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 50,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 117,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 53,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC Poway 10": {
+   "source": "ridethectrain",
+   "asOf": "May 2026",
+   "conf": "good",
+   "list": [
+    {
+     "n": 1,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 70,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 70,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 70,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 82,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 73,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 72,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 100,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 130,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC Anaheim GardenWalk 6": {
+   "source": "ridethectrain",
+   "asOf": "Mar 2025",
+   "conf": "good",
+   "list": [
+    {
+     "n": 1,
+     "seats": 54,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 48,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 79,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 58,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 80,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 139,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  },
+  "AMC Fullerton 20": {
+   "source": "ridethectrain",
+   "asOf": "Jul 2025",
+   "conf": "good",
+   "list": [
+    {
+     "n": 1,
+     "seats": 109,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 2,
+     "seats": 112,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 3,
+     "seats": 141,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 4,
+     "seats": 87,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 5,
+     "seats": 62,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 6,
+     "seats": 73,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 7,
+     "seats": 73,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 8,
+     "seats": 62,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 9,
+     "seats": 89,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 10,
+     "seats": 128,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 11,
+     "seats": 68,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 12,
+     "seats": 46,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 13,
+     "seats": 54,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 14,
+     "seats": 54,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 15,
+     "seats": 112,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 16,
+     "seats": 76,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 17,
+     "seats": 32,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 18,
+     "seats": 32,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 19,
+     "seats": 32,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    },
+    {
+     "n": 20,
+     "seats": 42,
+     "fmt": "",
+     "mapped": null,
+     "inf": false
+    }
+   ]
+  }
+ },
+ "theatreInfo": {
+  "AMC Mission Valley 20": {
+   "slug": "amc-mission-valley-20",
+   "short": "AMC Mission Valley 20"
+  },
+  "AMC Fashion Valley 18": {
+   "slug": "amc-fashion-valley-18",
+   "short": "AMC Fashion Valley 18"
+  },
+  "AMC Plaza Bonita 14": {
+   "slug": "amc-plaza-bonita-14",
+   "short": "AMC Plaza Bonita 14"
+  },
+  "AMC UTC 14": {
+   "slug": "amc-utc-14",
+   "short": "AMC UTC 14"
+  },
+  "AMC La Jolla 12": {
+   "slug": "amc-la-jolla-12",
+   "short": "AMC La Jolla 12"
+  },
+  "AMC Poway 10": {
+   "slug": "amc-poway-10",
+   "short": "AMC Poway 10"
+  },
+  "AMC Tustin 14 @ The District": {
+   "slug": "amc-tustin-14-at-the-district",
+   "short": "AMC Tustin 14 @ The District"
+  },
+  "AMC Tyler Galleria 16": {
+   "slug": "amc-tyler-galleria-16",
+   "short": "AMC Tyler Galleria 16"
+  },
+  "AMC Orange 30": {
+   "slug": "amc-orange-30",
+   "short": "AMC Orange 30"
+  },
+  "AMC Anaheim GardenWalk 6": {
+   "slug": "amc-anaheim-gardenwalk-6",
+   "short": "AMC Anaheim GardenWalk 6"
+  },
+  "AMC Fullerton 20": {
+   "slug": "amc-fullerton-20",
+   "short": "AMC Fullerton 20"
+  },
+  "Universal Cinema AMC at CityWalk Hollywood": {
+   "slug": "universal-cinema-an-amc-theatre",
+   "short": "CityWalk (Universal)"
+  },
+  "AMC Burbank 16": {
+   "slug": "amc-burbank-16",
+   "short": "AMC Burbank 16"
+  }
+ }
 };
