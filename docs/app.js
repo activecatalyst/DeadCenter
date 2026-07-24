@@ -4,7 +4,7 @@
 (function () {
   'use strict';
   var STALE_MONTHS = 18;
-  var VC = {'SWEET SPOT':'var(--sweet)','good':'var(--good)','too close':'var(--close)','too far':'var(--far)'};
+  var VC = {'SWEET SPOT':'var(--z-sweet)','good':'var(--z-good)','too close':'var(--z-close)','too far':'var(--z-far)'};
   var $ = function (s) { return document.querySelector(s); };
   var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) {
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
@@ -171,7 +171,53 @@
     originLabel = label;
     buildPicker();
     render();
+    renderBest();
   }
+
+  /* ---------- "Best way to see it" ranking ---------- */
+  // Presentation quality score per premium format. Standard Laser / RealD 3D are
+  // excluded (they're not premium presentations and float between rooms).
+  var PRES = { 'IMAX (very large)': 100, 'IMAX': 82, '70mm': 76,
+               'Dolby Cinema': 72, 'PRIME': 66, 'SCREENX': 60, 'XL': 55 };
+  var bestSort = 'presentation';
+  function renderBest() {
+    var el = document.getElementById('best'); if (!el) return;
+    var list = DATA.rooms.filter(function (r) { return PRES[r.format] != null; }).slice();
+    list.sort(function (a, b) {
+      return bestSort === 'nearest'
+        ? (a.miles - b.miles) || (PRES[b.format] - PRES[a.format])
+        : (PRES[b.format] - PRES[a.format]) || (a.miles - b.miles);
+    });
+    el.innerHTML = list.map(function (r, i) {
+      var disp = r.format === 'IMAX (very large)' ? 'IMAX' : r.format;
+      var tag = r.format === 'IMAX (very large)' ? ' · <span class="btag">★ large-format</span>'
+              : r.format === 'IMAX' ? ' · <span class="btag dim">digital</span>' : '';
+      return '<li><button class="brow" type="button" data-t="' + esc(r.theater) + '" data-f="' + esc(r.format) + '">' +
+        '<span class="brank">' + (i + 1) + '</span>' +
+        '<span class="bmeta"><b>' + esc(disp) + tag + '</b><span>' + esc(r.short) + '</span></span>' +
+        '<span class="bnum">' + r.total + ' seats<br>' + r.miles + ' mi</span></button></li>';
+    }).join('');
+  }
+  (function () {
+    var tog = document.getElementById('besttoggle');
+    if (tog) tog.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      bestSort = b.dataset.s;
+      Array.prototype.forEach.call(this.children, function (c) {
+        c.setAttribute('aria-pressed', String(c === b)); });
+      renderBest();
+    });
+    var lst = document.getElementById('best');
+    if (lst) lst.addEventListener('click', function (e) {
+      var b = e.target.closest('.brow'); if (!b) return;
+      var pt = $('#pt'), pf = $('#pf'), pa = $('#pa');
+      pt.value = b.dataset.t; pt.dispatchEvent(new Event('change', { bubbles: true }));
+      pa.value = '';
+      pf.value = b.dataset.f; pf.dispatchEvent(new Event('change', { bubbles: true }));
+      var w = document.getElementById('bestwrap'); if (w) w.open = false;
+      var ans = $('#answer'); if (ans && ans.scrollIntoView) ans.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  })();
 
   var locBtn = $('#loc'), locMsg = $('#locmsg');
   locBtn.addEventListener('click', function () {
@@ -242,15 +288,17 @@
     return { row: letter, seat: seat, note: note };
   }
 
-  function seatMap(room, pickNum) {
+  function seatMap(room, pickNum, hzRows) {
     var rows = room.rows.map(function (r) {
       var pick = r.r === room.bestRow;
+      var haz = hzRows && hzRows[r.r];
       var seats = '';
       for (var i = 1; i <= r.n; i++) {
         seats += '<span class="s' + (pick && i === pickNum ? ' pick' : '') + '"></span>';
       }
-      return '<div class="maprow" data-v="' + esc(r.v) + '"><span class="lb">' + esc(r.r) +
-        '</span><span class="seats">' + seats + '</span></div>';
+      return '<div class="maprow' + (haz ? ' haz' : '') + '" data-v="' + esc(r.v) + '"' +
+        (haz ? ' title="' + esc(hzRows[r.r]) + '"' : '') + '><span class="lb">' + esc(r.r) +
+        (haz ? ' ⚠' : '') + '</span><span class="seats">' + seats + '</span></div>';
     }).join('');
     return '<div class="map"><div class="mapinner">' +
       '<div class="screen"></div><div class="screenlbl">SCREEN</div>' + rows +
@@ -284,6 +332,33 @@
     return out;
   }
 
+  // "Report a correction" — opens a prefilled GitHub issue. Zero backend; starts
+  // the maintenance loop so wrong seat counts / moved formats get flagged.
+  function reportLink(context) {
+    var repo = DATA.config && DATA.config.repo;
+    if (!repo) return '';
+    var title = 'Correction: ' + context;
+    var body = 'What looks wrong (seat count, optimal seat, format, room closed, etc.):\n\n\n' +
+      '— Context: ' + context + '\n— Page: ' + location.href;
+    var url = 'https://github.com/' + repo + '/issues/new?title=' +
+      encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+    return '<a class="report" href="' + url + '" target="_blank" rel="noopener">' +
+      'Spot an error? Report a correction ↗</a>';
+  }
+
+  // Sightline-hazard report — the crowd-sourced obstruction layer. Prefills a
+  // GitHub issue labeled "sightline"; approved reports get added to HAZARDS.
+  function sightlineLink(room) {
+    var repo = DATA.config && DATA.config.repo;
+    if (!repo) return '';
+    var title = 'Sightline: ' + room.short + ' · ' + room.format;
+    var body = 'Which row, and what blocks the view (railing, walkway, handrail, pillar)?\n\n' +
+      'Row:\nWhat you see:\n\n— ' + room.short + ' · ' + room.format + '\n— Page: ' + location.href;
+    var url = 'https://github.com/' + repo + '/issues/new?labels=sightline&title=' +
+      encodeURIComponent(title) + '&body=' + encodeURIComponent(body);
+    return '<a class="report" href="' + url + '" target="_blank" rel="noopener">Report a blocked sightline ↗</a>';
+  }
+
   function rateBox(room) {
     return '<div class="rate"><label>Rate a seat in this room ' +
       '<input class="ratein" type="text" data-room="' + esc(room.id) + '" autocomplete="off" ' +
@@ -295,20 +370,31 @@
   function roomAnswerInner(room) {
     var adj = screenAdjust(room);
     var shown = adj.row + adj.seat;
+    var hz = (DATA.hazards && DATA.hazards[room.id]) || [];
+    var hzRows = {}; hz.forEach(function (h) { hzRows[h.row] = h.note; });
+    var feelStr = room.feel
+      ? [room.feel.seat, room.feel.sound, room.feel.light].filter(Boolean).map(esc).join(' · ') : '';
     return '<div class="bigseat"><span class="num' + (room.inband ? '' : ' off') + '">' + esc(shown) + '</span>' +
       '<span class="sub"><b>' + esc(room.short) + ' · ' + esc(room.format) + '</b>' +
       'Row ' + esc(room.bestRow) + ' · ' + room.lo + '–' + room.hi + '% back · ' +
       esc(room.seatType) + '<br>' + room.total + ' seats across ' + room.rows.length + ' rows · captured ' +
       esc(room.date) + (room.rep ? ' · <b class="inline">representative sample</b>' : '') +
       '</span></div>' +
+      (room.tier ? '<div class="tier"><span class="tierbadge">' + esc(room.tier.label) + '</span>' +
+                   esc(room.tier.detail) + '</div>' : '') +
+      (feelStr ? '<p class="feel">' + feelStr + '</p>' : '') +
       (EXPLAIN[room.format] ? '<p class="fmtnote">' + esc(EXPLAIN[room.format]) + '</p>' : '') +
       (adj.note ? '<p class="warn mt0">' + esc(adj.note) + '</p>' : '') +
-      seatMap(room, adj.seat) +
+      seatMap(room, adj.seat, hzRows) +
       '<p class="why mt">' + esc(room.why) + '</p>' +
       '<ul class="quirks">' + room.quirks.map(function (q) { return '<li>' + esc(q) + '</li>'; }).join('') +
       '</ul>' +
+      (hz.length ? '<div class="hazards"><b>⚠ Sightline notes (from moviegoers)</b><ul>' +
+        hz.map(function (h) { return '<li>Row ' + esc(h.row) + ' — ' + esc(h.note) + '</li>'; }).join('') +
+        '</ul></div>' : '') +
       rateBox(room) +
-      linksFor(room.theater);
+      linksFor(room.theater) +
+      '<div class="reports">' + reportLink(room.short + ' · ' + room.format) + sightlineLink(room) + '</div>';
   }
 
   // Live "rate my seat" — delegated so it works for every dynamically rendered answer.
@@ -399,13 +485,19 @@
       var room = DATA.rooms.filter(function (r) { return r.id === a.mapped; })[0];
       body = '<p class="why mt0">This is the ' + esc(a.fmt) + ' house — here’s its optimal seat.</p>' +
              roomAnswerInner(room);
-    } else if (a.fmt) {
-      body = '<p class="warn mt0">This is the ' + esc(a.fmt) + ' house, but I don’t have a measured seat map ' +
-             'for it (no showtime in that format during capture) — capacity only.</p>' +
-             (EXPLAIN[a.fmt] ? '<p class="fmtnote">' + esc(EXPLAIN[a.fmt]) + '</p>' : '') + linksFor(t);
     } else {
-      body = '<p class="warn mt0">Standard auditorium — capacity only. Standard screens float between rooms, ' +
-             'so there’s no fixed optimal seat here.</p>' + linksFor(t);
+      // capacity-only (premium-but-unmapped, or standard) — these branches need
+      // their own report link since they don't go through roomAnswerInner.
+      var ctx = theatreShort(t) + ' · Auditorium ' + num;
+      if (a.fmt) {
+        body = '<p class="warn mt0">This is the ' + esc(a.fmt) + ' house, but I don’t have a measured seat map ' +
+               'for it (no showtime in that format during capture) — capacity only.</p>' +
+               (EXPLAIN[a.fmt] ? '<p class="fmtnote">' + esc(EXPLAIN[a.fmt]) + '</p>' : '');
+      } else {
+        body = '<p class="warn mt0">Standard auditorium — capacity only. Standard screens float between rooms, ' +
+               'so there’s no fixed optimal seat here.</p>';
+      }
+      body += linksFor(t) + reportLink(ctx);
     }
     out.innerHTML = '<div class="answer">' + head + body + '</div>';
   }
@@ -415,6 +507,7 @@
   }).join('');
 
   render();
+  renderBest();
   openFromHash(true);
 
   /* ---------- iOS install hint ---------- */

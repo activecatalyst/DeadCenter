@@ -8,6 +8,15 @@
 window.SEATS = {
  "rooms": [
   {
+   "tier": {
+    "label": "Digital IMAX with Laser",
+    "detail": "A standard 1.90:1 multiplex IMAX \u2014 not the giant 1.43 large-format screen."
+   },
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": "IMAX sound system",
+    "light": "Laser projection"
+   },
    "id": "mission-valley-20/imax",
    "theater": "AMC Mission Valley 20",
    "short": "AMC Mission Valley 20",
@@ -129,6 +138,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Dual 4K laser \u00b7 Dolby Vision HDR"
+   },
    "id": "mission-valley-20/dolby-cinema",
    "theater": "AMC Mission Valley 20",
    "short": "AMC Mission Valley 20",
@@ -222,6 +237,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": null,
+    "light": "70mm film print"
+   },
    "id": "mission-valley-20/70mm",
    "theater": "AMC Mission Valley 20",
    "short": "AMC Mission Valley 20",
@@ -371,6 +392,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": "Dolby Atmos",
+    "light": null
+   },
    "id": "mission-valley-20/xl",
    "theater": "AMC Mission Valley 20",
    "short": "AMC Mission Valley 20",
@@ -499,6 +526,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "mission-valley-20/standard-laser",
    "theater": "AMC Mission Valley 20",
    "short": "AMC Mission Valley 20",
@@ -620,6 +653,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": null,
+    "light": null
+   },
    "id": "mission-valley-20/reald-3d",
    "theater": "AMC Mission Valley 20",
    "short": "AMC Mission Valley 20",
@@ -747,6 +786,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "fashion-valley-18/standard-laser",
    "theater": "AMC Fashion Valley 18",
    "short": "AMC Fashion Valley 18",
@@ -855,6 +900,15 @@ window.SEATS = {
    ]
   },
   {
+   "tier": {
+    "label": "Digital IMAX with Laser",
+    "detail": "A standard 1.90:1 multiplex IMAX \u2014 not the giant 1.43 large-format screen."
+   },
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": "IMAX sound system",
+    "light": "Laser projection"
+   },
    "id": "plaza-bonita-14/imax",
    "theater": "AMC Plaza Bonita 14",
    "short": "AMC Plaza Bonita 14",
@@ -969,6 +1023,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Dual 4K laser \u00b7 Dolby Vision HDR"
+   },
    "id": "plaza-bonita-14/dolby-cinema",
    "theater": "AMC Plaza Bonita 14",
    "short": "AMC Plaza Bonita 14",
@@ -1054,6 +1114,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "plaza-bonita-14/standard-laser",
    "theater": "AMC Plaza Bonita 14",
    "short": "AMC Plaza Bonita 14",
@@ -1132,6 +1198,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Dual 4K laser \u00b7 Dolby Vision HDR"
+   },
    "id": "utc-14/dolby-cinema",
    "theater": "AMC UTC 14",
    "short": "AMC UTC 14",
@@ -1225,6 +1297,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "utc-14/standard-laser",
    "theater": "AMC UTC 14",
    "short": "AMC UTC 14",
@@ -1304,6 +1382,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "la-jolla-12/standard-laser",
    "theater": "AMC La Jolla 12",
    "short": "AMC La Jolla 12",
@@ -1404,6 +1488,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Heated recliners",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "poway-10/standard-laser",
    "theater": "AMC Poway 10",
    "short": "AMC Poway 10",
@@ -1476,6 +1566,15 @@ window.SEATS = {
    ]
   },
   {
+   "tier": {
+    "label": "Digital IMAX with Laser",
+    "detail": "A standard 1.90:1 multiplex IMAX \u2014 not the giant 1.43 large-format screen."
+   },
+   "feel": {
+    "seat": "Recliners",
+    "sound": "IMAX sound system",
+    "light": "Laser projection"
+   },
    "id": "tustin-14/imax",
    "theater": "AMC Tustin 14 @ The District",
    "short": "AMC Tustin 14 @ The District",
@@ -1562,6 +1661,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Dual 4K laser \u00b7 Dolby Vision HDR"
+   },
    "id": "tustin-14/dolby-cinema",
    "theater": "AMC Tustin 14 @ The District",
    "short": "AMC Tustin 14 @ The District",
@@ -1655,6 +1760,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Laser projection"
+   },
    "id": "tustin-14/prime",
    "theater": "AMC Tustin 14 @ The District",
    "short": "AMC Tustin 14 @ The District",
@@ -1748,6 +1859,15 @@ window.SEATS = {
    ]
   },
   {
+   "tier": {
+    "label": "Digital IMAX with Laser",
+    "detail": "A standard 1.90:1 multiplex IMAX \u2014 not the giant 1.43 large-format screen."
+   },
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": "IMAX sound system",
+    "light": "Laser projection"
+   },
    "id": "tyler-galleria-16/imax",
    "theater": "AMC Tyler Galleria 16",
    "short": "AMC Tyler Galleria 16",
@@ -1862,6 +1982,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Dual 4K laser \u00b7 Dolby Vision HDR"
+   },
    "id": "tyler-galleria-16/dolby-cinema",
    "theater": "AMC Tyler Galleria 16",
    "short": "AMC Tyler Galleria 16",
@@ -1955,6 +2081,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": "Dolby Atmos",
+    "light": null
+   },
    "id": "tyler-galleria-16/xl",
    "theater": "AMC Tyler Galleria 16",
    "short": "AMC Tyler Galleria 16",
@@ -2076,6 +2208,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "tyler-galleria-16/standard-laser",
    "theater": "AMC Tyler Galleria 16",
    "short": "AMC Tyler Galleria 16",
@@ -2161,6 +2299,15 @@ window.SEATS = {
    ]
   },
   {
+   "tier": {
+    "label": "Digital IMAX with Laser",
+    "detail": "A standard 1.90:1 multiplex IMAX \u2014 not the giant 1.43 large-format screen."
+   },
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": "IMAX sound system",
+    "light": "Laser projection"
+   },
    "id": "orange-30/imax",
    "theater": "AMC Orange 30",
    "short": "AMC Orange 30",
@@ -2288,6 +2435,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Dual 4K laser \u00b7 Dolby Vision HDR"
+   },
    "id": "orange-30/dolby-cinema",
    "theater": "AMC Orange 30",
    "short": "AMC Orange 30",
@@ -2388,6 +2541,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": "Dolby Atmos",
+    "light": null
+   },
    "id": "orange-30/xl",
    "theater": "AMC Orange 30",
    "short": "AMC Orange 30",
@@ -2537,6 +2696,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "orange-30/standard-laser",
    "theater": "AMC Orange 30",
    "short": "AMC Orange 30",
@@ -2637,6 +2802,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "anaheim-gardenwalk-6/standard-laser",
    "theater": "AMC Anaheim GardenWalk 6",
    "short": "AMC Anaheim GardenWalk 6",
@@ -2724,6 +2895,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "fullerton-20/standard-laser",
    "theater": "AMC Fullerton 20",
    "short": "AMC Fullerton 20",
@@ -2803,6 +2980,15 @@ window.SEATS = {
    ]
   },
   {
+   "tier": {
+    "label": "True large-format IMAX",
+    "detail": "70mm-film and 1.43:1 capable (~7-story screen) \u2014 one of only ~25 IMAX 70mm houses in the US."
+   },
+   "feel": {
+    "seat": "Traditional seats",
+    "sound": "IMAX sound system",
+    "light": "Laser projection"
+   },
    "id": "citywalk-universal/imax-very-large",
    "theater": "Universal Cinema AMC at CityWalk Hollywood",
    "short": "CityWalk (Universal)",
@@ -2925,6 +3111,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Laser projection"
+   },
    "id": "citywalk-universal/prime",
    "theater": "Universal Cinema AMC at CityWalk Hollywood",
    "short": "CityWalk (Universal)",
@@ -3018,6 +3210,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": null,
+    "light": "70mm film print"
+   },
    "id": "citywalk-universal/70mm",
    "theater": "Universal Cinema AMC at CityWalk Hollywood",
    "short": "CityWalk (Universal)",
@@ -3104,6 +3302,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "citywalk-universal/standard-laser",
    "theater": "Universal Cinema AMC at CityWalk Hollywood",
    "short": "CityWalk (Universal)",
@@ -3176,6 +3380,15 @@ window.SEATS = {
    ]
   },
   {
+   "tier": {
+    "label": "Digital IMAX with Laser",
+    "detail": "A standard 1.90:1 multiplex IMAX \u2014 not the giant 1.43 large-format screen."
+   },
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": "IMAX sound system",
+    "light": "Laser projection"
+   },
    "id": "burbank-16/imax",
    "theater": "AMC Burbank 16",
    "short": "AMC Burbank 16",
@@ -3297,6 +3510,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Dual 4K laser \u00b7 Dolby Vision HDR"
+   },
    "id": "burbank-16/dolby-cinema",
    "theater": "AMC Burbank 16",
    "short": "AMC Burbank 16",
@@ -3404,6 +3623,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Recliners",
+    "sound": "Dolby Atmos",
+    "light": "Laser projection"
+   },
    "id": "burbank-16/prime",
    "theater": "AMC Burbank 16",
    "short": "AMC Burbank 16",
@@ -3511,6 +3736,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": "Dolby Atmos",
+    "light": null
+   },
    "id": "burbank-16/xl",
    "theater": "AMC Burbank 16",
    "short": "AMC Burbank 16",
@@ -3632,6 +3863,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": null,
+    "light": "70mm film print"
+   },
    "id": "burbank-16/70mm",
    "theater": "AMC Burbank 16",
    "short": "AMC Burbank 16",
@@ -3739,6 +3976,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": null,
+    "light": null
+   },
    "id": "burbank-16/screenx",
    "theater": "AMC Burbank 16",
    "short": "AMC Burbank 16",
@@ -3861,6 +4104,12 @@ window.SEATS = {
    ]
   },
   {
+   "tier": null,
+   "feel": {
+    "seat": "Plush rockers",
+    "sound": null,
+    "light": "Laser projection"
+   },
    "id": "burbank-16/standard-laser",
    "theater": "AMC Burbank 16",
    "short": "AMC Burbank 16",
@@ -5649,5 +5898,9 @@ window.SEATS = {
    "slug": "amc-burbank-16",
    "short": "AMC Burbank 16"
   }
+ },
+ "hazards": {},
+ "config": {
+  "repo": "activecatalyst/DeadCenter"
  }
 };

@@ -174,11 +174,50 @@ def room_format(theater, tok):
             'PRIME': 'PRIME', 'SCREENX': 'SCREENX'}.get(tok)
 
 # ---------------------------------------------------------------- view model
+# IMAX tier — the "real IMAX vs LieMAX" distinction avid moviegoers care about.
+# Derived from the room format: CityWalk is the only true large-format house here.
+def imax_tier(fmt):
+    if fmt == 'IMAX (very large)':
+        return {'label': 'True large-format IMAX',
+                'detail': '70mm-film and 1.43:1 capable (~7-story screen) — one of only ~25 IMAX 70mm houses in the US.'}
+    if fmt == 'IMAX':
+        return {'label': 'Digital IMAX with Laser',
+                'detail': 'A standard 1.90:1 multiplex IMAX — not the giant 1.43 large-format screen.'}
+    return None
+
+# "Room feel" — comfort / sound / brightness a moviegoer cares about. Only claims
+# what the format or seat type guarantees; leaves the rest blank rather than guess.
+def room_feel(fmt, fmt_label, seat_type):
+    st = seat_type or ''
+    if 'Heated' in st and 'Recliner' in st: seat = 'Heated recliners'
+    elif 'Recliner' in st: seat = 'Recliners'
+    elif 'Club Rocker' in st: seat = 'Plush rockers'
+    elif 'Traditional' in st: seat = 'Traditional seats'
+    else: seat = None
+    # Sound — only where AMC's format definitionally guarantees it
+    if fmt in ('Dolby Cinema', 'PRIME', 'XL'): sound = 'Dolby Atmos'
+    elif fmt.startswith('IMAX'): sound = 'IMAX sound system'
+    else: sound = None                       # 70mm / SCREENX / standard / 3D vary — don't claim
+    # Projection / brightness
+    if fmt == 'Dolby Cinema': light = 'Dual 4K laser · Dolby Vision HDR'
+    elif fmt == '70mm': light = '70mm film print'
+    elif fmt == 'PRIME': light = 'Laser projection'
+    elif 'Laser' in (fmt_label or ''): light = 'Laser projection'
+    else: light = None
+    return {'seat': seat, 'sound': sound, 'light': light}
+
+# Crowd-sourced sightline hazards (railings, walkways, obstructions), keyed by room id.
+# Starts EMPTY by design — it fills from moviegoer reports, reviewed before adding.
+# Each: { 'room-id': [ {'row': 'K', 'note': 'handrail along the cross-aisle'} ] }
+HAZARDS = {}
+
 rooms = []
 for r in D['rooms']:
     lo, hi = band(r['format'])
     best, inband = optimal(r)
     rooms.append({
+        'tier': imax_tier(r['format']),
+        'feel': room_feel(r['format'], r['fmtLabel'], r['seatType']),
         'id': slug(r['theater']) + '/' + slug(r['format']),
         'theater': r['theater'],
         'short': r['theater'].replace('Universal Cinema AMC at CityWalk Hollywood', 'CityWalk (Universal)'),
@@ -220,7 +259,10 @@ for r in rooms:
         theatre_info[r['theater']] = {'slug': AMC_SLUG.get(r['theater'], ''), 'short': r['short']}
 
 payload = {'rooms': rooms, 'gaps': D['gaps'], 'missing': missing,
-           'auditoriums': auditoriums, 'theatreInfo': theatre_info}
+           'auditoriums': auditoriums, 'theatreInfo': theatre_info,
+           'hazards': {rid: HAZARDS[rid] for rid in HAZARDS},
+           # repo powers the "report a correction" link (prefilled GitHub issue).
+           'config': {'repo': 'activecatalyst/DeadCenter'}}
 
 SEATS_JS = (
     "/* Dead Center — seat geometry. THE DATA IS THE ASSET.\n"

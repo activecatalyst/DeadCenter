@@ -49,6 +49,19 @@
   <div id="answer" aria-live="polite"></div>
 </div>
 
+<details class="best" id="bestwrap">
+  <summary>★ Best way to see it near you</summary>
+  <div class="bestbody">
+    <p class="hint">Premium presentations ranked. "Best presentation" favours the biggest,
+       most immersive screen; "Closest" favours distance. Availability is separate — tap a room to see its seat.</p>
+    <div class="besttoggle" id="besttoggle">
+      <button type="button" data-s="presentation" aria-pressed="true">Best presentation</button>
+      <button type="button" data-s="nearest" aria-pressed="false">Closest</button>
+    </div>
+    <ol id="best"></ol>
+  </div>
+</details>
+
 <div class="controls">
   <input type="search" id="q" placeholder="Search all rooms…" autocomplete="off" aria-label="Search">
   <div class="chips" id="chips"></div>

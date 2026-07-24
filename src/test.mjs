@@ -57,6 +57,28 @@ for (const r of S.rooms) {
   }
 }
 
+// IMAX tier: every IMAX room carries a tier label; non-IMAX rooms don't.
+for (const r of S.rooms) {
+  if (r.format.indexOf('IMAX') === 0) {
+    ok(r.tier && r.tier.label && r.tier.detail, `${r.theater}: IMAX room has a tier`);
+  } else {
+    ok(!r.tier, `${r.theater} / ${r.format}: non-IMAX has no tier`);
+  }
+}
+
+// Sightline hazards (crowd-sourced) must reference a real room and a real row.
+if (S.hazards) {
+  const byId = new Map(S.rooms.map(r => [r.id, r]));
+  for (const [rid, list] of Object.entries(S.hazards)) {
+    const room = byId.get(rid);
+    ok(room, `hazard room id ${rid} resolves`);
+    for (const h of (list || [])) {
+      ok(typeof h.note === 'string' && h.note, `${rid} hazard has a note`);
+      ok(room.rows.some(x => x.r === h.row), `${rid} hazard row ${h.row} exists`);
+    }
+  }
+}
+
 // THE contract: nothing in `missing` may also be a real seated room
 for (const m of S.missing) {
   ok(typeof m.theater === 'string' && typeof m.format === 'string' && typeof m.note === 'string',

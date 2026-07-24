@@ -6,7 +6,7 @@
        (so a fix lands on next load rather than being pinned forever)
      styles/icons/manifest          -> cache first (they rarely change)
 */
-var CACHE = 'deadcenter-v8';
+var CACHE = 'deadcenter-v11';
 var SHELL = ['./', 'index.html', 'app.js', 'seats.js', 'styles.css', 'manifest.json',
              'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png', 'og.png'];
 
